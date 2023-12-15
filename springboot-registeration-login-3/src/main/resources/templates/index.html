@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AdventureAdvisor </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
+	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="GetTemplates.co" />
+
+	<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js">
+	</script>
+	<script>
+		$(document).ready(function () {
+		var navbar = $(".navbar");
+
+		$(window).scroll(function () {
+		if ($(this).scrollTop() > 50) {
+			navbar.fadeOut(300);
+		} else {
+			navbar.fadeIn(300);
+		}
+		});
+		});
+	</script>
+
+    <style>
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+          }
+
+          
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+          }
+
+
+         
+          .navbar a.right {
+            float: right;
+          }
+
+          .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+
+          .navbar a.active {
+            background-color: #666;
+            color: white;
+            pointer-events: none;
+		  }
+		  .fh5co-text {
+            text-align: center; /* Center align the text */
+			padding-bottom: 15px;
+			
+        }
+		#gtco-features {
+            background-color: #3498db; /* Blue background color */
+            color: #fff; /* White text color for better visibility */
+            padding: 60px 0; /* Adjust padding as needed */
+        }
+		
+		
+
+        #gtco-features h2,
+        #gtco-features p {
+			margin: auto;
+            color: #fff; /* Set text color to white within the blue background */
+        }
+		.feature-center {
+			margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-center span.icon {
+            display: block;
+            font-size: 36px;
+            color: #fff;
+            background-color: #3498db; /* Circle background color */
+            width: 60px; /* Circle width */
+            height: 60px; /* Circle height */
+            line-height: 60px; /* Center content vertically */
+            border-radius: 50%; /* Make it a circle */
+            margin: 0 auto 20px; /* Add some margin for spacing */
+			border: 2px solid #fff; /* White border */
+        }
+
+        .feature-center span.icon i {
+            color: #fff;
+        }
+
+		#gtco-footer .gtco-widget h3{
+    		text-align: center;
+			font-weight: bold;
+			font-size: 15px;
+			letter-spacing: 2px;
+  			text-transform: uppercase;
+		}
+
+		#gtco-footer .gtco-widget p {
+			text-align: center;
+		}
+
+		#gtco-footer .gtco-widget ul{
+			padding-left: 100px;
+		}
+
+		
+    </style>
+	
+	
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	
+	<body>
+		<div class="navbar">
+                <a href="/" th:href="@{/index}" class="active">Home</a>
+                  <a href="/" th:href="@{/countries}">Countries</a>
+                  <a href="/">Places of Interest</a>
+                  <a href="/" th:href="@{/savetrip}">Save a Trip</a>
+                <a href="/" th:href="@{/login}" class="right">Logout</a>
+            </div>
+
+        <!--</div>-->
+    <!--</nav>-->
+
+    <br>
+    <br>
+
+	<div class="gtco-loader"></div>
+	
+	<div id="page">
+
+	
+	<!-- <div class="page-inner"> -->
+	
+	
+	
+	<div class="gtco-section">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+					<h1>Most Popular Destination</h1>
+					<p>Check out some of our most popular destinations and enjoy the unique experience of traveling!</p>
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="https://a.cdn-hotels.com/gdcs/production133/d1207/7ad2d7f0-68ce-11e8-8a0f-0242ac11000c.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="https://a.cdn-hotels.com/gdcs/production133/d1207/7ad2d7f0-68ce-11e8-8a0f-0242ac11000c.jpg" alt="Image" class="img-responsive" style=" height:230px; width:300px; margin: auto;">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Madird, Spain</h2>
+							<p>Spain, where history meets modernity in a dance of culture, art and nightlife.</p>
+							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="https://www.europanostra.org/wp-content/uploads/2022/05/20220531-Athens-Hub-%C2%A9-Nick-N-A-Shutterstock-ed.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="https://www.europanostra.org/wp-content/uploads/2022/05/20220531-Athens-Hub-%C2%A9-Nick-N-A-Shutterstock-ed.jpg" alt="Image" class="img-responsive" style="height:230px; width:300px; margin: auto;">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Athens, Greece</h2>
+							<p>Cradle of Western civilization. Ancient history is intertwined with modern life.</p>
+							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/large_jpg/eiffel-tower-in-paris-151-medium.jpg?1564742900" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/large_jpg/eiffel-tower-in-paris-151-medium.jpg?1564742900" alt="Image" class="img-responsive" style="height:230px; width:300px; margin: auto;">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Paris, France</h2>
+							<p>The city of love and light, where timeless elegance mixes with architectural beauty.</p>
+							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+						</div>
+					</a>
+				</div>
+
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="https://www.civitatis.com/f/portugal/lisboa/lisboa-card-589x392.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="https://www.civitatis.com/f/portugal/lisboa/lisboa-card-589x392.jpg" alt="Image" class="img-responsive" style="height:230px; width:300px; margin: auto;">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Lisboa, Portugal</h2>
+							<p>With its cobbled streets, colorful facades and panoramic views, Lisbon invites you to get lost and discover the authentic Portuguese soul.</p>
+							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="https://d3rr2gvhjw0wwy.cloudfront.net/uploads/mandators/49581/file-manager/cairo-city-egypt-2020.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="https://d3rr2gvhjw0wwy.cloudfront.net/uploads/mandators/49581/file-manager/cairo-city-egypt-2020.jpg" alt="Image" class="img-responsive" style="height:230px; width:300px; margin: auto;">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Cairo, Egypt</h2>
+							<p>With its towering pyramids, colorful markets and palpable energy in its streets, Cairo transports you through time as you explore the rich history and Egyptian hospitality.</p>
+							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="https://www.travellingking.com/wp-content/uploads/2019/01/Budapest-1000x667.jpg" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="https://www.travellingking.com/wp-content/uploads/2019/01/Budapest-1000x667.jpg" alt="Image" class="img-responsive" style="height:230px; width:300px; margin: auto;">
+						</figure>
+						<div class="fh5co-text">
+							<h2>Budapest, Hungary</h2>
+							<p>The jewel on the banks of the Danube, where architectural majesty meets urban vitality. With its thermal baths, iconic bridges and rich cultural heritage, Budapest captivates at every turn, offering a unique experience in the heart of Europe.</p>
+							<p><span class="btn btn-primary">Schedule a Trip</span></p>
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<div id="gtco-features">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+					<h2>How It Works</h2>
+					<p>Plan and share your adventures anywhere in the world quickly and easily. Everything is within reach of a couple of clicks.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>1</i>
+						</span>
+						<h3>Where do you want to go?</h3>
+						<p>Choose the destination that most attracts your attention and start planning your trip.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>2</i>
+						</span>
+						<h3>Plan your trip</h3>
+						<p>Access trip planning and make your perfect plan to enjoy the trip. Don't worry, we will recommend the best of the best.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<i>3</i>
+						</span>
+						<h3>Enjoy and value</h3>
+						<p>Enjoy your dream trip and share your opinion, warnings and advice with everyone. Future travelers will thank you.</p>
+					</div>
+				</div>
+				
+
+			</div>
+		</div>
+	</div>
+
+
+	
+
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="gtco-container">
+			<div class="row row-p	b-md">
+
+				<div class="col-md-4">
+					<div class="gtco-widget">
+						<h3>About Us</h3>
+						<p>We are a group of 4 people who form the group "404" and our goal is to pass the subject and learn along the way. By the way, our teacher is the best.</p>
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Destination</h3>
+						<ul class="gtco-footer-links">
+							<li><a href="#">Egypt</a></li>
+							<li><a href="#">Hungary</a></li>
+							<li><a href="#">Spain</a></li>
+							<li><a href="#">Portugal</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Hotels</h3>
+						<ul class="gtco-footer-links">
+							<li><a href="#">Luxe Hotel</a></li>
+							<li><a href="#">5 Star hotel</a></li>
+							<li><a href="#">Hotel UltraRelax</a></li>
+							<li><a href="#">Deluxe Hotel</a></li>
+							<li><a href="#">VIP Hotel</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Get In Touch</h3>
+						<ul class="gtco-quick-contact">
+							<li><a href="#"><i class="icon-phone"></i> +1 234 567 890</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> info@sde404.com</a></li>
+							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		
+	</footer>
+	<!-- </div> -->
+
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- countTo -->
+	<script src="js/jquery.countTo.js"></script>
+
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	
+	<!-- Datepicker -->
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	
+
+	<!-- Main -->
+	<script src="js/main.js"></script>
+	
+	</body>
+</html>
+

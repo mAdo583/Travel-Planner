@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+  var navbar = $(".navbar");
+
+  $(window).scroll(function () {
+  if ($(this).scrollTop() > 50) {
+    navbar.fadeOut(300);
+  } else {
+    navbar.fadeIn(300);
+  }
+  });
+  });
+</script>
+
+	<style>
+		.navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+          }
+
+          
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+          }
+
+
+         
+          .navbar a.right {
+            float: right;
+          }
+
+          .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+
+          .navbar a.active {
+            background-color: #666;
+            color: white;
+            pointer-events: none;
+		  }
+
+          @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #009ee2;
+  }
+  
+  #search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #009ee2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+  }
+
+
+ #search-button:hover {
+    transform: scale(1.1);
+  }
+
+
+  .banner_cultura {
+    position: relative;
+  }
+  
+  
+  input[type="text"]:focus {
+    outline: none;
+  }
+
+  .title_cultura {
+    color: #009ee2;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+/*spain.html*/
+
+.title_spain {
+  color: #009ee2;
+  text-align: center;
+}
+
+
+.banner_spain {
+  position: relative;
+  width: 100%;
+}
+
+.banner_spain img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+.overlay_spain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.textoBanner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.textoBanner h2 {
+  font-size: 150px;
+  font-family: 'Tangerine', cursive;
+  margin-bottom: 80px;
+}
+
+
+.container {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.text-box {
+  background-color: #fff;
+  border: 2px solid #009ee2;
+  padding: 20px;
+  text-align: justify;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+  height: auto;
+}
+
+.container h2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #009ee2;
+}
+
+.column img {
+  width: 600px;
+  margin-right: 20px;
+}
+
+
+.item {
+  color: #357abd;
+}
+
+#imagemOqueFazer{
+  width: 500px;
+}
+
+
+
+	</style>
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+		<!--<div class="container">-->
+			<div class="navbar">
+				<a href="/" th:href="@{/index}" >Home</a>
+  				<a href="/" th:href="@{/countries}" class="active">Countries</a>
+  				<a href="#">Places of Interest</a>
+  				<a href="#" th:href="@{/savetrip}" >My Travels</a>
+				<a href="/" th:href="@{/login}" class="right">Logout</a>
+			</div>
+			
+		<!--</div>-->
+	<!--</nav>-->
+
+
+    <div class="banner_spain">
+        <img src="https://img.freepik.com/premium-photo/spain-flag-black-wood-wall-horizontal-panoramic-banner_118047-6273.jpg" alt="Banner spain">
+        <div class="overlay_spain"></div>
+        <div class="textoBanner">
+            <h2>Spain</h2>
+        </div>
+      </div>  
+      
+      
+      <div class="container">
+  
+  
+  
+        <h2>Curiosities</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://images.goabroad.com/image/upload/images2/program_content/1-1612106365.jpg" alt="Curiosities about Spain">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Spain is home to the world's third-largest number of UNESCO World Heritage Sites:</span> With a total of 49 UNESCO World Heritage Sites, Spain ranks third globally, following Italy and China. These sites include historic cities, landmarks, and natural wonders, showcasing the country's diverse cultural and natural heritage.</p>
+  
+              <p><span class="item">La Tomatina, the world's largest food fight, takes place in Spain:</span> Held annually in the town of Buñol, La Tomatina is a massive tomato-throwing festival that attracts participants from around the world. Thousands of people gather to engage in this unique and lively event, turning the streets into a sea of red tomatoes.</p>
+  
+              <p><span class="item">The Running of the Bulls in Pamplona is a centuries-old tradition:</span>Every July, the streets of Pamplona come alive with the Running of the Bulls, part of the San Fermín festival. Participants run alongside charging bulls, testing their courage and agility. The tradition has its roots in the festival's historical connection to bullfighting.</p>
+  
+              <p><span class="item">Spain has the highest number of bars per inhabitant in the European Union:</span> Spaniards are known for their love of socializing and enjoying tapas in bars. With approximately one bar for every 132 inhabitants, Spain leads the European Union in this lively aspect of its culture.</p>
+  
+              <p><span class="item">The world's second-most spoken language, Spanish, originated in the Iberian Peninsula:</span> Spanish, or Castilian, developed on the Iberian Peninsula and gradually spread to become one of the most widely spoken languages globally. It is the official language in 21 countries, with over 460 million native speakers.</p>
+  
+              <p><span class="item">Spain has the highest number of organ donors per million people:</span> Spain has consistently ranked at the top for organ donation rates, with an efficient and successful organ transplant system. The country has implemented policies to encourage organ donation, leading to a higher number of donors per million people compared to other nations.</p>
+  
+              <p><span class="item">The Sagrada Família in Barcelona has been under construction for over a century:</span> Designed by architect Antoni Gaudí, the Sagrada Família is an iconic basilica known for its intricate and unique architectural style. Construction began in 1882, and it continues to this day, with an anticipated completion date in the 2030s.</p>
+  
+              <p><span class="item">Spain is the birthplace of paella, a famous rice dish:</span> Originating from the Valencia region, paella is a delicious and globally recognized Spanish dish. Traditionally prepared with rice, saffron, vegetables, and a variety of proteins such as chicken, rabbit, or seafood, paella is a staple of Spanish cuisine.</p>
+            </div>
+          </div>
+        </div>
+  
+  
+        <h2>Costumes and Traditions</h2>
+        <div class="row">
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Music and Dance:</span> Spain is synonymous with passionate and rhythmic music and dance. Flamenco, a dynamic art form that includes singing (cante), dancing (baile), guitar playing (toque), and handclaps (palmas), originated in the Andalusian region. Flamenco expresses a range of emotions and stories, making it a captivating and deeply rooted cultural treasure. Other traditional dances like the Sevillanas and Jota are celebrated during festivals, each with its unique regional flair.</p>
+  
+              <p><span class="item">Clothing and Fashion:</span> Spanish traditional clothing reflects the country's diverse history and regions. The flamenco dress, characterized by its vibrant colors, ruffles, and intricate designs, is an iconic representation of Spain's cultural heritage. In regions like Catalonia, the sardana dance is performed in traditional attire, featuring bright dresses for women and sashes for men.</p>
+  
+              <p><span class="item">Religious Festivals:</span> Religion plays a significant role in Spanish culture, with the majority of the population being Catholic. Spain hosts elaborate religious festivals, processions, and ceremonies throughout the year. Semana Santa (Holy Week) is widely celebrated across the country, with intricate processions depicting biblical scenes. The Festival of San Fermín in Pamplona is known for its religious origins and the running of the bulls, attracting both locals and tourists.</p>
+  
+              <p><span class="item">Local Celebrations and Carnivals:</span> Spaniards love to celebrate, and each region has its unique festivals and carnivals. The Fallas in Valencia involves constructing elaborate sculptures that are eventually burned in a spectacular display. La Tomatina, mentioned earlier, is a lively tomato-throwing festival in Buñol. During carnivals, especially in the Canary Islands and Cadiz, colorful parades, music, and dance fill the streets.</p>
+  
+              <p><span class="item">Siesta Culture:</span> Similar to Portugal, Spain also embraces the siesta culture, especially in warmer regions. Afternoon siestas, typically between 2 pm and 5 pm, allow people to escape the heat and recharge for the rest of the day. While some shops may close during this time, the streets come alive in the evenings, and social activities continue late into the night.</p>
+
+              <p><span class="item">Culinary Delights:</span> Spanish cuisine is a delightful journey through diverse flavors. Each region boasts its specialties, from paella in Valencia to pintxos in the Basque Country. Tapas, small savory dishes, are a beloved tradition, encouraging socializing and sharing. The country is also renowned for its wine, with regions like La Rioja producing some of the finest wines in the world.</p>
+  
+            </div>
+          </div>
+          <div class="column">
+            <img src="https://www.spain.info/.content/imagenes/cabeceras-grandes/cataluna/diada-vilafranca-del-penedes.jpg" alt="Traditions of Portugal">
+          </div>
+          
+        </div>
+  
+  
+  
+        <h2>Etiquette</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://static.independent.co.uk/2023/03/10/14/iStock-1320014700.jpg?width=1200&height=900&fit=crop" alt="Imagem">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Greetings in Spain:</span> In Spain, greetings vary across regions, but a common practice is the exchange of kisses on the cheek. The number of kisses can differ; in some regions, it's two, while in others, it may be one or even three. However, in more formal settings, a handshake is appropriate. Friends often greet each other with warmth, embracing or patting on the back, especially in the southern parts of the country. </p>
+  
+              <p><span class="item">Spanish Dress Code:</span> Similar to Portugal, the attire in Spain is often seen as a reflection of one's status. While luxury brands are appreciated, subtlety is key. Flamboyant displays of wealth might be considered ostentatious. People in Spain generally appreciate well-dressed individuals, and even casual settings may require a level of sophistication. However, the dress code can vary, with more relaxed styles in coastal areas compared to the formalities of cities like Madrid. </p>
+  
+              <p><span class="item">Gift Giving in Spain:</span> Gift-giving is a common practice in Spain, particularly during holidays and special occasions. When invited to someone's home, it's customary to bring a gift, such as chocolates, wine, or flowers. In a business context, gifts are exchanged to strengthen relationships. However, flashy or overly expensive gifts can be perceived as inappropriate, and the thought behind the gift is often more valued than its monetary worth.</p>
+  
+              <p><span class="item">Dining Etiquette in Spain:</span> Spanish dining etiquette is a social affair, emphasizing shared meals and lively conversations. The host often determines seating arrangements, and it's polite to wait until everyone is served before beginning the meal. The Spanish saying "buen provecho" is equivalent to Portugal's "bom proveito" and is used to signal the start of the meal. Engaging in conversation during meals is encouraged, making dining a leisurely and communal experience.</p>
+  
+              <p><span class="item">Public Displays of Affection (PDA) in Spain:</span> Spain has a conservative approach to public displays of affection. While holding hands and a peck on the cheek are generally accepted, overly passionate or intense displays may attract attention and disapproval. Spaniards tend to value a degree of discretion in matters of affection in public spaces.</p>
+
+            </div>
+          </div>
+        </div>
+
+	
+</body>
+</html>

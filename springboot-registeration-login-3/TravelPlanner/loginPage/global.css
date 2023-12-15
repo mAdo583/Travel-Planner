@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-cabinet-grotesk: "Cabinet Grotesk";
+  --font-poppins: Poppins;
+  --font-princess-sofia: "Princess Sofia";
+  --font-cabin-condensed: "Cabin Condensed";
+
+  /* font sizes */
+  --font-size-sm: 14px;
+  --font-size-3xs: 10px;
+  --font-size-55xl: 74px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-deepskyblue: #009ee2;
+  --color-gray-100: rgba(0, 0, 0, 0.5);
+
+  /* Border radiuses */
+  --br-4xs: 9px;
+}

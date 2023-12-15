@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+  var navbar = $(".navbar");
+
+  $(window).scroll(function () {
+  if ($(this).scrollTop() > 50) {
+    navbar.fadeOut(300);
+  } else {
+    navbar.fadeIn(300);
+  }
+  });
+  });
+</script>
+
+	<style>
+		.navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+          }
+
+          
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+          }
+
+
+         
+          .navbar a.right {
+            float: right;
+          }
+
+          .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+
+          .navbar a.active {
+            background-color: #666;
+            color: white;
+            pointer-events: none;
+		  }
+
+          @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #009ee2;
+  }
+  
+  #search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #009ee2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+  }
+
+
+ #search-button:hover {
+    transform: scale(1.1);
+  }
+
+
+  .banner_cultura {
+    position: relative;
+  }
+  
+  
+  input[type="text"]:focus {
+    outline: none;
+  }
+
+  .title_cultura {
+    color: #009ee2;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+/*egypt.html*/
+
+.title_egypt {
+  color: #009ee2;
+  text-align: center;
+}
+
+
+.banner_egypt {
+  position: relative;
+  width: 100%;
+}
+
+.banner_egypt img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+.overlay_egypt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.textoBanner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.textoBanner h2 {
+  font-size: 150px;
+  font-family: 'Tangerine', cursive;
+  margin-bottom: 80px;
+  color: black;
+}
+
+
+.container {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 1300px;
+  height: auto;
+}
+
+.column {
+  flex: 1;
+}
+
+.text-box {
+  background-color: #fff;
+  border: 2px solid #009ee2;
+  padding: 20px;
+  text-align: justify;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+  height: auto;
+}
+
+.container h2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #009ee2;
+}
+
+.column img {
+  height: 400px;
+  width: 600px;
+  margin-right: 20px;
+}
+
+
+.item {
+  color: #357abd;
+}
+
+#imagemOqueFazer{
+  width: 5000px;
+}
+
+
+
+	</style>
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+		<!--<div class="container">-->
+			<div class="navbar">
+				<a href="/" th:href="@{/index}" >Home</a>
+  				<a href="/" th:href="@{/countries}" class="active">Countries</a>
+  				<a href="#">Places of Interest</a>
+  				<a href="#" th:href="@{/savetrip}" >My Travels</a>
+				<a href="/" th:href="@{/login}" class="right">Logout</a>
+			</div>
+			
+		<!--</div>-->
+	<!--</nav>-->
+
+
+    <div class="banner_egypt">
+        <img src="https://img.freepik.com/premium-photo/egypt-flag-old-white-wall-horizontal-panoramic-banner_118047-5178.jpg" alt="Banner egypt">
+        <div class="overlay_egypt"></div>
+        <div class="textoBanner">
+            <h2>Egypt</h2>
+        </div>
+      </div>  
+      
+      
+      <div class="container">
+  
+  
+  
+        <h2>Curiosities</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://www.visafirst.com/blog/wp-content/uploads/2021/07/Egypt-next-travel-destination-min.jpg" alt="Curiosities about Portugal">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Historical Marvels:</span> Egypt, a land steeped in history, beckons tourists with its iconic landmarks. From the majestic pyramids of Giza, one of the Seven Wonders of the Ancient World, to the Sphinx standing guard over the plateau, visitors are transported to the time of pharaohs and ancient civilizations</p>
+  
+              <p><span class="item">Nile river Cruises:</span> Embarking on a Nile River cruise offers a unique perspective on Egypt's landscape. The river, considered the lifeblood of the country, meanders through lush landscapes and ancient temples, providing a serene and captivating journey.</p>
+  
+              <p><span class="item">Cultural riches:</span>Immerse yourself in Egypt's vibrant culture by exploring bustling markets, known as souks, where you can haggle for souvenirs and experience the local way of life. The Khan El Khalili bazaar in Cairo is a sensory delight with its myriad of shops and traditional crafts.</p>
+  
+              <p><span class="item">Enchanting Deserts:</span> Egypt's deserts are a mesmerizing expanse of golden sands and ancient mysteries. A visit to the White Desert, with its surreal chalk formations, or the Siwa Oasis, known for its lush palm groves, offers a stark yet captivating contrast to the bustling cities.</p>
+  
+              <p><span class="item">Luxor and Karnak Temples:</span> The temples of Luxor and Karnak stand as testaments to Egypt's grandeur. Marvel at the colossal statues, intricate hieroglyphics, and monumental pillars that tell the tales of ancient rituals and powerful rulers</p>
+  
+              <p><span class="item">Islamic and Coptic Heritage:</span> Explore the religious diversity of Egypt by visiting Cairo's historic Islamic and Coptic quarters. The Hanging Church, the Citadel of Saladin, and the vibrant Ibn Tulun Mosque showcase the rich tapestry of faith and architecture.</p>
+  
+              <p><span class="item">Warm Hospitality:</span> Beyond its ancient wonders, Egypt is known for its warm hospitality. Whether sipping tea in a local cafe or navigating the bustling streets, visitors will encounter the friendliness of the Egyptian people, adding a touch of warmth to their unforgettable journey.</p>
+            </div>
+          </div>
+        </div>
+  
+  
+        <h2>Costumes and Traditions</h2>
+        <div class="row">
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Music:</span> Music and dance were highly valued in ancient Egyptian culture, but they were more important than is generally thought: they were integral to creation and communion with the gods and, further, were the human response to the gift of life and all the experiences of the human condition.</p>
+  
+              <p><span class="item">Clothing and Fashion:</span> Most men wear a galabia or dishdasha (traditional white cotton tunic with long sleeves and slit on the sides) and a keffiyeh (headscarf). As a result of the influence of westeern culture on Egypt, Egyptians have adopyed western clothing styles in their everyday life. When men go to work they commonly wear westeren-style clothing such as trousers, shirts, and suits.</p>
+  
+              <p><span class="item">Religion:</span> The state religion of Egypt is Islam, although estimates vary greatly in the absence of official statistics. Since the 2006 census religion has been excluded, and thus available statistics are estimates made by religious and non-governmental agencies. The country is majority Sunni Muslim (estimated to be 85-95% of the population), with the next largest religious group being Coptic Orthodox Christians with estimates ranging from 5-15%. Egypt hosts two major religious institutions. Al-Azhar Mosque, founded in 970 CE by the Fatimids as the first Islamic university in Egypt and the Coptic Orthodox Church of Alexandria established in the middle of the 1st century by Saint Mark. In Egypt, Muslims and Christians share a common history, national identity, ethnicity, race, culture, and language.</p>
+  
+              
+  
+              <p><span class="item">Food and drinks:</span> Egyptian cuisine is a vibrant tapestry of flavors, combining influences from the Middle East and the Mediterranean. Breakfast often begins with Ful Medames, a hearty dish of fava beans seasoned with garlic and olive oil. Koshari, a national favorite, melds lentils, rice, and macaroni topped with zesty tomato sauce and crispy fried onions. Street food enthusiasts relish shawarma, while mezze platters featuring baba ganoush and hummus showcase the variety of appetizers. Traditional bread, particularly Aish Baladi, accompanies almost every meal. Refreshing beverages include hibiscus tea (Karkade), strong and sweet Egyptian coffee, and the popular mango juice. The culinary landscape is rounded out with dishes like Mulukhiya, a leafy green stew, and mint tea, providing a delectable glimpse into Egypt's rich culinary heritage.</p>
+  
+            </div>
+          </div>
+          <div class="column">
+            <img src="https://www.egypttoursportal.com/images/2020/12/Egypt-Culture-and-Traditions-Facts-Egypt-Tours-Portal.jpg" alt="Traditions of Egypt">
+          </div>
+          
+        </div>
+  
+  
+  
+        <h2>Etiquette</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://aminadiab.files.wordpress.com/2017/02/egypt-lunch.jpg" alt="Imagem">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Greetings in Egypt:</span> In Egypt, greetings are imbued with warmth and hospitality, reflecting the country's vibrant culture. Commonly, people greet each other with a friendly "As-salamu alaykum," which means "Peace be upon you." This traditional Islamic greeting is met with a warm response of "Wa alaykum as-salam," meaning "And upon you be peace." Egyptians are known for their friendliness, and it's not uncommon for greetings to be accompanied by a handshake or, among close friends and family, a kiss on both cheeks. Politeness is highly valued, and it's customary to inquire about one's well-being and the well-being of their family before delving into conversation. Overall, greetings in Egypt are not just social niceties but a reflection of the country's deeply rooted respect for community and connection. </p>
+  
+              <p><span class="item">Egyptian Dress Code:</span> The dress code in Egypt is characterized by modesty and respect for cultural and religious traditions. Women commonly wear loose-fitting clothing that covers the arms, shoulders, and knees, with some opting for a headscarf. Men typically don long trousers and shirts, with traditional attire such as the "galabeya" for more formal occasions. Swimsuits are acceptable at beach resorts but should be covered when leaving the beach area. When visiting religious sites, it's important to dress more conservatively, with women potentially covering their hair. Removing shoes when entering homes or places of worship is customary. In urban areas like Cairo, the dress code may be more relaxed, but in rural areas, conservative attire is often preferred. Adhering to these customs not only demonstrates cultural sensitivity but also ensures a more comfortable and respectful experience in Egypt. </p>
+  
+              <p><span class="item">Gift Giving in Egypt:</span> Gift giving in Egypt is a thoughtful and culturally significant practice, expressing appreciation and goodwill. When presenting a gift, it's customary to offer it with the right hand or both hands, as the left hand is traditionally considered less polite. Gifts are often graciously received, and it's common for the recipient to express gratitude multiple times. Symbolic and meaningful gifts are appreciated, and it's courteous to unwrap a gift in the presence of the giver. When giving a gift, it's advisable to consider Islamic customs and avoid items that may be culturally inappropriate. Additionally, reciprocating the gesture of gift giving is a common practice, fostering a sense of reciprocity and strengthening social bonds. Overall, gift giving in Egypt is a cherished tradition that reflects generosity, thoughtfulness, and the importance of interpersonal relationships.</p>
+  
+              <p><span class="item">Dining Etiquette in Egypt:</span> Dining etiquette in Egypt is characterized by a strong emphasis on hospitality and communal sharing. When invited to someone's home, it's customary to bring a small gift as a token of appreciation. Upon entering, removing one's shoes is a sign of respect. During the meal, it's polite to wait until the host starts eating before you begin. Egyptians often eat with their right hand, and it's customary to use bread to scoop up food. Engaging in lively conversation is encouraged, but discussions about sensitive topics like politics or religion may be best approached with discretion. Finishing everything on your plate is a sign of enjoying the meal. It's common for hosts to offer second helpings, and it's polite to accept graciously. At the end of the meal, expressing gratitude is essential, and it's customary to offer compliments to the host about the food. Overall, dining in Egypt is a social event, and observing these cultural norms enhances the experience of sharing a meal.</p>
+  
+              <p><span class="item">6-th of October</span> The 6th of October Victory is a pivotal moment in Egyptian history, marking the triumph of Egyptian forces over Israel in the Yom Kippur War of 1973. This military success, also known as the October War or Ramadan War, demonstrated Egypt's resilience and determination. The conflict began on October 6, 1973, with a surprise attack on Israeli positions in the Sinai Peninsula during the Jewish holiday of Yom Kippur. Despite initial setbacks, Egyptian forces, led by General Mohamed Anwar Sadat, managed to recapture territory lost in the Six-Day War of 1967. The eventual ceasefire brokered by the United Nations highlighted the strategic importance of the 6th of October Victory. This achievement is commemorated annually in Egypt, symbolizing the nation's ability to stand firm in the face of adversity and reclaim its sovereignty</p>
+
+            </div>
+          </div>
+        </div>
+
+	
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+  var navbar = $(".navbar");
+
+  $(window).scroll(function () {
+  if ($(this).scrollTop() > 50) {
+    navbar.fadeOut(300);
+  } else {
+    navbar.fadeIn(300);
+  }
+  });
+  });
+</script>
+
+	<style>
+		.navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+          }
+
+          
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+          }
+
+
+         
+          .navbar a.right {
+            float: right;
+          }
+
+          .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+
+          .navbar a.active {
+            background-color: #666;
+            color: white;
+            pointer-events: none;
+		  }
+
+          @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #009ee2;
+  }
+  
+  #search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #009ee2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+  }
+
+
+ #search-button:hover {
+    transform: scale(1.1);
+  }
+
+
+  .banner_cultura {
+    position: relative;
+  }
+  
+  
+  input[type="text"]:focus {
+    outline: none;
+  }
+
+  .title_cultura {
+    color: #009ee2;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+/*japan.html*/
+
+.title_japan {
+  color: #009ee2;
+  text-align: center;
+}
+
+
+.banner_japan {
+  position: relative;
+  width: 100%;
+}
+
+.banner_japan img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+.overlay_japan {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.textoBanner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.textoBanner h2 {
+  font-size: 150px;
+  font-family: 'Tangerine', cursive;
+  margin-bottom: 80px;
+}
+
+
+.container {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.text-box {
+  background-color: #fff;
+  border: 2px solid #009ee2;
+  padding: 20px;
+  text-align: justify;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+  height: auto;
+}
+
+.container h2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #009ee2;
+}
+
+.column img {
+  width: 600px;
+  margin-right: 20px;
+}
+
+
+.item {
+  color: #357abd;
+}
+
+#imagemOqueFazer{
+  width: 500px;
+}
+
+
+
+	</style>
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+		<!--<div class="container">-->
+			<div class="navbar">
+				<a href="/" th:href="@{/index}" >Home</a>
+  				<a href="/" th:href="@{/countries}" class="active">Countries</a>
+  				<a href="#">Places of Interest</a>
+  				<a href="#" th:href="@{/savetrip}" >My Travels</a>
+				<a href="/" th:href="@{/login}" class="right">Logout</a>
+			</div>
+			
+		<!--</div>-->
+	<!--</nav>-->
+
+
+    <div class="banner_japan">
+        <img src="https://media.istockphoto.com/id/1270565463/photo/portuguese-flag-isolated-on-white-banner.jpg?s=170667a&w=0&k=20&c=lYegnDyF-d61zUUVRvBoftG03AjYnBb-PeiIzUYKyHI=" alt="Banner Japan">
+        <div class="overlay_japan"></div>
+        <div class="textoBanner">
+            <h2>Portugal</h2>
+        </div>
+      </div>  
+      
+      
+      <div class="container">
+  
+  
+  
+        <h2>Curiosities</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://www.pixel4k.com/wp-content/uploads/2018/09/tower-bridge-belem-lisbon-portugal-4k_1538067989.jpg" alt="Curiosities about Portugal">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Portugal is one of the oldest nations in Europe:</span> The borders of the nation of Portugal were defined in 1139, making it not only one of the oldest nations in the world but arguably in all of Europe. Portugal appointed King Afonso Henriques as its king that year. Fun fact: Lisbon is actually four centuries older than Rome. Before it was known as Portugal, the territory had been settled by various empires and civilizations such as by the Phoenicians in 1200 BC.</p>
+  
+              <p><span class="item">The oldest operating bookstore in the world is located in Lisbon:</span> Located in Chiado, Livraria Bertrand holds the Guinness world record for the world's oldest bookstore still in operation, founded in 1732. With over 250 years of history, Bertrand was opened by Peter Faure as a small shop and was once a hotspot for Portuguese intellectuals across the decades. In 2010, the bookstore became part of the Porto Editora group and branches opened all over the country. However, the Lisbon bookstore remains a historical and cultural landmark for book lovers.</p>
+  
+              <p><span class="item">Portugal is one of the most peaceful countries:</span>In 2021, Portugal came in 4th place on the Global Peace Index (GPI), making it one of the most peaceful countries in the world, behind Iceland, New Zealand, and Denmark. Portugal is thus one of the safest countries in the world with little violence.</p>
+  
+              <p><span class="item">There are over 250 million Portuguese speakers around the globe:</span> Portuguese is one of the 10 most spoken languages in the world, with over 250 million Portuguese speakers around the globe. Portuguese is the official language in 9 countries including Brazil, Mozambique, Angola, Portugal, Guinea-Bissau, East Timor, Equatorial Guinea, Macau, Cape Verde, and São Tomé and Príncipe. Therefore it's not that surprising that only 5% of Portuguese speakers live in Portugal.</p>
+  
+              <p><span class="item">Portugal is home to the world's largest cork forest:</span> After bacalhau and the Barcelos rooster, an iconic Portuguese symbol is cork. Portugal is the biggest cork producer in the world and produces more than 50% of the world's cork supply. It is also home to the world's largest cork forests, making up 34% of the world's area of cork forests. The Amorim Family of Portuguese billionaire Américo Amorim made their multi-billion-dollar fortune in the cork industry.</p>
+  
+              <p><span class="item"> Lisbon suffered one of the world's largest natural disasters in world history:</span> On November 1st, 1755 an earthquake hit Lisbon, destroying almost the entirety of the city. Seismologists estimate the earthquake had a magnitude of 7.7 or more. The earthquake generated a 6-meter-high tsunami that caused many to drown. The death toll in Lisbon was between 12,000 and 60,000 people, making it one of the deadliest earthquakes in history.</p>
+  
+              <p><span class="item">The maximum prison sentence in Portugal is 25 years:</span> The Portuguese Penal Code states that a person must not be sentenced to a prison sentence longer than 25 years. This means that even if multiple crimes such as homicides are committed, no one will serve more than 25 years in prison. Naturally, the death penalty is also not present in Portugal.</p>
+  
+              <p><span class="item">Portugal decriminalized all drugs in 2001, the first country in the world to do so:</span> On July 1, 2001, Portugal became the first country in the world to decriminalize all drugs, including meth and heroin. The law made drug possession for personal use legally prohibited, while drug trafficking remains a criminal offense. The change in law was applied as a measure to fight the heightened drug epidemic of the 90s and the rise of HIV cases. Portugal now has some of the lowest drug usage rates in the European Union (EU), where most countries hold criminalization models.</p>
+            </div>
+          </div>
+        </div>
+  
+  
+        <h2>Costumes and Traditions</h2>
+        <div class="row">
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Music:</span> Portugal embraces music from all walks of life and boasts a wide array of national songs, music and dances. Among the most popular folk dances are the Fandango, Corridinho, and many more. Songs and dances originally came from many regions all over Portugal but they merged to form the versions we see today. Wherever you go in Portugal, you will find song and dance, from country fairs in the hinterlands to world-music festivals along the coast to the mournful music of fado in the Alfama.</p>
+  
+              <p><span class="item">Clothing and Fashion:</span> Portuguese national clothes are noted for their bright and vivid colours. Traditional Portuguese dress consists of bouffant skirts made from saia (chequered or striped fabrics) for women, and calsas, short leggings, sombreros, and waistcoats for men. Women also sometimes wear a kerchief, but this varies a lot depending on which region you're in.</p>
+  
+              <p><span class="item">Religion:</span> The majority of Portuguese people are Catholic. Almost every major city boasts a cathedral and every town and village will have a church close by. From 12th-century Romanesque structures to lavish Baroque and Manueline, there is a wealth of variety to take in during your trip. Including some of the most famous, the Sé de Lisboa (also known as Santa Maria Maior de Lisboa), dating back to the Christian Reconquista of Portugal after centuries of Moorish rule. Also UNESCO World Heritage Site, the grandeaur of Jerónimos Monastery, a colossal example from the Portuguese Age of Discovery. Another favourite is the Sé da Guarda whch appears part church, part fortress. Plans for the cathedral date from the early 13th century, when Portugal was just emerging from war. The religious traditions are evidenced by many Catholic celebrations, holidays and special occasions. Pilgrimages to holy sites and observance of Saints are common, and during feast days images or statues of Saints are paraded through the streets. You'll also see carnivals where stories from the Bible are acted out.</p>
+  
+              <p><span class="item">Portuguese Siesta Time:</span> The traditional Portuguese lifestyle is laid-back and calm. A good example of this is the siesta. Siesta hours are between 12pm-3pm so don't be surprised if you find the shops closed during this time because it's their opportunity to take a break from the heat and sun. By contracts, everyone will still be out and about til late after dark.</p>
+  
+              <p><span class="item">Food and Wine:</span> Every region in Portugal has its own unique dish and cuisine, with fresh fish, seafood and meat among the most popular. You'll also find traditional meals like Cozido à Portuguesa (Portuguese stew) and Bacalhau (dried and salted cod) everywhere. Beer is also popular in Portugal - Ginjinha, Licor Beirão and Sagres among the best known brands.</p>
+  
+            </div>
+          </div>
+          <div class="column">
+            <img src="https://images6.alphacoders.com/473/473253.jpg" alt="Traditions of Portugal">
+          </div>
+          
+        </div>
+  
+  
+  
+        <h2>Etiquette</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://c4.wallpaperflare.com/wallpaper/989/440/1013/clouds-home-the-evening-the-city-wallpaper-preview.jpg" alt="Imagem">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Greetings in Portugal:</span> Greetings in Portugal are highly gendered. Men greet each other by shaking hands. If they are close friends, they might shake hands with a pat on the back, like a half hug. They might also give two kisses, one on each cheek if they are related. This depends on a particular family's dynamic. </p>
+  
+              <p><span class="item">Portuguese Dress Code:</span> It's been known that Portuguese people equate nice clothing with status. Many can't afford expensive clothes but will still purchase them. However, this does not necessarily apply to luxury brands like Louis Vuitton or Gucci. Such displays of wealth are often frowned upon if they are not discrete. This does not mean that you can't have a luxury bag, but pieces such as a Versace coat with the logo all over are seen as tacky. </p>
+  
+              <p><span class="item">Gift Giving in Portugal:</span> Gift giving is significant in Portugal. Gifts are a sign of respect, not bribes. In a business environment, it's common for companies to send gifts to their business clients and partners, usually in the form of gift baskets. Gifts typically include spirits, whiskey, Port wine, or coffee table books.</p>
+  
+              <p><span class="item">Dining Etiquette in Portugal:</span> Dining etiquette in Portugal can be a bit daunting for first-timers, but you will easily get the hang of it. The host usually decides where people sit if you are having dinner at someone's house. You don't start eating until everyone is served. It's common for the host to say “bom apetite” or “bom proveito” to signal everyone can start eating.</p>
+  
+              <p><span class="item">Public Displays of Affection (PDA) in Portugal:</span> PDA is often frowned upon in Portugal. This doesn't obviously include holding hands, hugging, and a quick kiss. However, intense kissing is disrespectful and will get you lots of stares. People might actually come up to you and call this behavior out.</p>
+
+            </div>
+          </div>
+        </div>
+
+	
+</body>
+</html>

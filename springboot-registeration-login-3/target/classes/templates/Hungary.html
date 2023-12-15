@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function () {
+  var navbar = $(".navbar");
+
+  $(window).scroll(function () {
+  if ($(this).scrollTop() > 50) {
+    navbar.fadeOut(300);
+  } else {
+    navbar.fadeIn(300);
+  }
+  });
+  });
+</script>
+
+	<style>
+		.navbar {
+            overflow: hidden;
+            background-color: #333;
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+          }
+
+          
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+          }
+
+
+         
+          .navbar a.right {
+            float: right;
+          }
+
+          .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+
+          .navbar a.active {
+            background-color: #666;
+            color: white;
+            pointer-events: none;
+		  }
+
+          @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #009ee2;
+  }
+  
+  #search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #009ee2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+  }
+
+
+ #search-button:hover {
+    transform: scale(1.1);
+  }
+
+
+  .banner_cultura {
+    position: relative;
+  }
+  
+  
+  input[type="text"]:focus {
+    outline: none;
+  }
+
+  .title_cultura {
+    color: #009ee2;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+
+
+
+/*egypt.html*/
+
+.title_egypt {
+  color: #009ee2;
+  text-align: center;
+}
+
+
+.banner_egypt {
+  position: relative;
+  width: 100%;
+}
+
+.banner_egypt img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 450px;
+}
+
+.overlay_egypt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.textoBanner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.textoBanner h2 {
+  font-size: 150px;
+  font-family: 'Tangerine', cursive;
+  margin-bottom: 80px;
+  color: black;
+  padding-left: 20%;
+}
+
+
+.container {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 1300px;
+  height: auto;
+}
+
+.column {
+  flex: 1;
+}
+
+.text-box {
+  background-color: #fff;
+  border: 2px solid #009ee2;
+  padding: 20px;
+  text-align: justify;
+  border-radius: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 50px;
+  height: auto;
+}
+
+.container h2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #009ee2;
+}
+
+.column img {
+  height: 400px;
+  width: 600px;
+  margin-right: 20px;
+}
+
+
+.item {
+  color: #357abd;
+}
+
+#imagemOqueFazer{
+  width: 5000px;
+}
+
+
+
+	</style>
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+		<!--<div class="container">-->
+			<div class="navbar">
+				<a href="/" th:href="@{/index}" >Home</a>
+  				<a href="/" th:href="@{/countries}" class="active">Countries</a>
+  				<a href="#">Places of Interest</a>
+  				<a href="#" th:href="@{/savetrip}" >My Travels</a>
+				<a href="/" th:href="@{/login}" class="right">Logout</a>
+			</div>
+			
+		<!--</div>-->
+	<!--</nav>-->
+
+
+    <div class="banner_egypt">
+        <img src="https://st3.depositphotos.com/29384342/50158/i/450/depositphotos_501581312-stock-photo-hungary-flag-old-white-wall.jpg" alt="Banner egypt">
+        <div class="overlay_egypt"></div>
+        <div class="textoBanner">
+            <h2>Hungary</h2>
+        </div>
+      </div>  
+      
+      
+      <div class="container">
+  
+  
+  
+        <h2>Curiosities</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/36/37/32/caption.jpg?w=700&h=500&s=1" alt="Curiosities about Portugal">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Historical Marvels:</span>Hungary boasts a rich history, and its cities are adorned with historical landmarks. Explore Buda Castle in Budapest, a UNESCO World Heritage Site, offering panoramic views of the Danube River. Visit Fisherman's Bastion for its fairytale towers and Matthias Church, a masterpiece of Gothic architecture. Discover the medieval town of Szentendre, known for its charming streets and art galleries, providing a glimpse into Hungary's cultural past.</p>
+  
+              <p><span class="item">Thermal Baths and Wellness:</span> Hungary is renowned for its thermal baths, a tradition dating back to Roman times. Experience relaxation in Budapest's famous Széchenyi Thermal Bath, one of the largest spa complexes in Europe. Gellért Baths, with its stunning Art Nouveau architecture, is another popular choice. Immerse yourself in the healing waters and indulge in spa treatments, embracing Hungary's wellness culture. </p>
+  
+              <p><span class="item">Cultural riches:</span>Hungary's cultural tapestry is woven with a rich heritage that spans centuries. Immerse yourself in the heart of Budapest, where historic sites like Buda Castle and the Hungarian Parliament showcase architectural brilliance. The country's cultural calendar is filled with events, from the Budapest Opera Ball to the Budapest Wine Festival, offering a glimpse into Hungary's artistic soul.
+
+Explore the thriving arts scene in Budapest, with museums like the Hungarian National Museum and the Museum of Fine Arts housing treasures from different eras. Don't miss the Hungarian State Opera House, a magnificent venue where classical performances unfold in an atmosphere of timeless elegance.
+
+Venture beyond the capital to discover Hungary's rural charm, where folk traditions come alive in villages like Hollókő, a UNESCO-listed settlement. Experience the lively festivals that celebrate traditional music, dance, and crafts, providing a firsthand encounter with Hungary's cultural vibrancy.
+
+Hungary's devotion to preserving its traditions is evident in events like the Busó Festival in Mohács, a unique celebration featuring masks, folk music, and a carnival atmosphere. Whether strolling through Budapest's cultural districts or participating in local festivities, Hungary invites you to savor a cultural journey that transcends time and bridges the past with the present.</p>
+  
+              <p><span class="item">Festivals and Celebrations:</span> Hungary comes alive with vibrant festivals and celebrations throughout the year. Attend the Budapest Wine Festival to sample exquisite local wines against the backdrop of Buda Castle. Experience the lively atmosphere of Budapest's ruin bars, unique establishments set in abandoned buildings. Join in the revelry of the Budapest International Documentary Festival or celebrate the Budapest International Wine Festival for a taste of Hungarian culture and entertainment.</p>
+              
+  
+              <p><span class="item">Warm Hospitality:</span> Hungary is known for its warm and welcoming hospitality, reflecting the country's rich cultural traditions. Visitors to Hungary often experience genuine friendliness and openness from the locals. Whether enjoying a meal at a traditional Hungarian restaurant or exploring the charming villages, the warmth of the Hungarian people is evident. Hospitality is deeply ingrained in Hungarian culture, and guests are treated with kindness and generosity. This warm reception adds a special touch to the overall experience of discovering Hungary's unique history, landscapes, and traditions.</p>
+            </div>
+          </div>
+        </div>
+  
+  
+        <h2>Costumes and Traditions</h2>
+        <div class="row">
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Music:</span> Music holds a significant place in Hungarian culture, with a diverse musical heritage that spans classical, folk, and contemporary genres. Hungary has produced renowned classical composers like Franz Liszt and Béla Bartók, contributing to the world of classical music. Traditional Hungarian folk music, characterized by unique scales and rhythms, continues to thrive, featuring instruments like the violin and cimbalom. In contemporary music, Hungary has a vibrant scene with artists exploring various genres, including pop, rock, and electronic music. Festivals and events showcase the country's musical diversity, making it a lively and culturally rich destination for music enthusiasts.</p>
+  
+              <p><span class="item">Clothing and Fashion:</span>Hungarian clothing and fashion showcase a blend of traditional and modern styles, reflecting the country's rich cultural heritage and contemporary influences. In urban areas like Budapest, western-style clothing is prevalent, with people donning attire typical of other European cities. However, traditional Hungarian garments, such as the folk-inspired embroidered dresses for women and vests for men, are still worn on special occasions and cultural events. The younger generation often embraces global fashion trends, while older generations may maintain a connection to traditional clothing. Overall, Hungary's clothing and fashion scene highlight a dynamic mix of modernity and cultural pride. </p>
+  
+              <p><span class="item">Religion:</span> Hungary is a country with a diverse religious landscape. While the majority of the population identifies as Christian, with Roman Catholicism being the largest denomination, there is also a significant Protestant community, including Calvinists and Lutherans. Additionally, Hungary is home to Jewish, Muslim, and Hindu communities, contributing to the religious diversity of the nation. Over the centuries, Hungary has been shaped by various religious influences, and religious tolerance is a fundamental aspect of the country's identity. The coexistence of different faiths reflects Hungary's commitment to religious freedom and cultural diversity.</p>
+  
+              
+  
+              <p><span class="item">Food and drinks:</span> Hungarian cuisine is a rich tapestry of flavors deeply rooted in tradition. Breakfast often includes bread with butter, cheese, or cold cuts. Lunch and dinner are substantial meals, featuring dishes like goulash, a hearty soup with meat and vegetables, and stuffed peppers. Paprika, a quintessential Hungarian spice, is used generously, adding depth and warmth to many dishes. Langos, a deep-fried flatbread, is a popular street food, often enjoyed with garlic and sour cream. Hungary is renowned for its pastries, with chimney cake (kürtőskalács) and dobos torte being favorites. As for drinks, pálinka, a fruit brandy, holds a special place, and Hungarian wines, especially Tokaji, are celebrated internationally. Exploring Hungary's culinary landscape offers a delightful journey into the country's cultural and gastronomic heritage.</p>
+  
+            </div>
+          </div>
+          <div class="column">
+            <img src="https://www.budapest.org/en/wp-content/uploads/sites/101/budapest-danube-panorama-hd.jpg" alt="Traditions of Egypt">
+          </div>
+          
+        </div>
+  
+  
+  
+        <h2>Etiquette</h2>
+        <div class="row">
+          <div class="column">
+            <img src="https://pm1.aminoapps.com/7255/8595fb4b8f9ecd7d3b07fa3175aa17bb44d30c0dr1-960-720v2_hq.jpg" alt="Imagem">
+          </div>
+          <div class="column">
+            <div class="text-box">
+              <p><span class="item">Greetings in Hungary:</span> In Hungary, greetings are expressions of warmth and respect, reflecting the country's emphasis on politeness and courtesy. The formal greeting "Jó napot kívánok" is commonly used in formal settings, translating to "I wish you a good day." In casual encounters, people often opt for the informal "Szia" or "Helló" to say "Hi" or "Hello." Morning and evening greetings such as "Jó reggelt" (Good morning) and "Jó estét" (Good evening) are also customary. Handshakes are a common gesture, with some friendly encounters involving a kiss on both cheeks. Adding polite expressions like "Kérem" (please) and "Köszönöm" (thank you) enhances the overall courtesy of greetings. Whether in formal or informal situations, Hungarians appreciate maintaining eye contact and often exchange pleasantries to create a friendly atmosphere. </p>
+  
+              <p><span class="item">Hungarian Dress Code:</span> The dress code in Hungary is a blend of contemporary Western styles and traditional elements. In urban areas like Budapest, casual and smart-casual attire is widely acceptable, similar to other European cities. Hungarians appreciate well-groomed appearances, and dressing neatly is often considered a sign of respect. For formal occasions or business settings, men may opt for suits and ties, while women may choose elegant dresses or business attire. Traditional Hungarian garments, such as the folk-inspired "Magyar" embroidery, are occasionally worn during cultural events or celebrations. Overall, a sense of modesty and appropriateness is valued, and visitors are likely to feel comfortable in a range of clothing styles as long as they maintain a polished and respectful appearance. </p>
+  
+              <p><span class="item">Gift Giving in Hungarian:</span> Gift giving in Hungary is a thoughtful and appreciated practice that reflects goodwill and respect. When presenting a gift, it is customary to offer it with both hands as a sign of politeness and sincerity. Hungarians value the sentiment behind the gift, and it is common for recipients to express gratitude genuinely. Symbolic and meaningful gifts are well-received, and it is polite to open the gift in the presence of the giver. When choosing a gift, consider Hungarian customs and preferences, and avoid items that may be culturally inappropriate. Reciprocating the gesture of gift giving is often practiced, strengthening social connections and fostering a sense of camaraderie. Overall, gift giving in Hungary is a cherished tradition that emphasizes the importance of thoughtfulness and building positive relationships.</p>
+  
+              <p><span class="item">Dining Etiquette in Hungarian:</span> Dining etiquette in Hungary places a strong emphasis on hospitality and conviviality. When invited to someone's home, it's customary to bring a small gift, such as flowers or chocolates, as a token of appreciation. Hungarians appreciate good manners, and guests are expected to wait until the host starts eating before they begin. Engaging in polite conversation during the meal is encouraged, and discussions about personal topics or sensitive issues should be approached with discretion. Using utensils appropriately is essential, and finishing everything on your plate is seen as a sign of enjoying the meal. If a host offers second helpings, accepting graciously is considered polite. Expressing gratitude at the end of the meal and complimenting the host on the food are customary. Overall, dining in Hungary is a social affair, and observing these cultural norms contributes to a positive and enjoyable experience.</p>
+  
+              
+
+            </div>
+          </div>
+        </div>
+
+	
+</body>
+</html>

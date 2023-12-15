@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<style>
+		.navbar {
+			overflow: hidden;
+			background-color: #333;
+			position: sticky;
+			position: -webkit-sticky;
+			top: 0;
+		  }
+		  
+		  /* Style the navigation bar links */
+		.navbar a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 20px;
+			text-decoration: none;
+		  }
+		  
+		  
+		  /* Right-aligned link */
+		  .navbar a.right {
+			float: right;
+		  }
+		  
+		  /* Change color on hover */
+		  .navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		  }
+		  
+		  /* Active/current link */
+		  .navbar a.active {
+			background-color: #666;
+			color: white;
+            pointer-events: none;
+          }
+          
+          .container-dadosViagem {
+            display: flex;
+            justify-content: center;
+          }
+          
+          .input-container {
+            text-align: center;
+            margin: 30px;
+          }
+          
+          h2 {
+            margin-bottom: 10px;
+            color: #009ee2;
+          }
+          
+          .inputDataTrip {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            border-bottom: solid 2px #009ee2;
+            margin-right: 20px;
+            font-size: 15px;
+          }
+        
+          .inputDataTrip:focus {
+            outline: none;
+          }
+        
+          
+        
+          /* calendarios */
+        
+        
+        .calendar-container{
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .calendar-container h2{
+            color: #009ee2;
+            margin-bottom: 30px;
+        }
+        
+        #datepicker-start, #datepicker-end {
+            border: none;
+            border-bottom: solid 2px #009ee2;
+            margin-right: 20px;
+            font-size: 15px;
+        }
+        
+        #datepicker-start:focus, #datepicker-end:focus {
+            outline: none;
+          }
+        
+        
+        
+        
+          /* tabelas */
+         
+        
+          .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 50px;
+          }
+          
+          .column {
+            background-color: #fff;
+            padding: 20px;
+            
+          }
+          
+          .table-wrapper {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            font-size: 13px;
+            border: 2px solid #009ee2;
+            border-radius: 4px;
+            background-color: #fff;
+            padding: 20px;
+          }
+        
+          .table-wrapper table {
+            width: 100%;
+            table-layout: fixed;
+          }
+          
+          .column h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #009ee2;
+          }
+          
+          table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          
+          th, td {
+            padding: 10px;
+            text-align: left; 
+          }
+        
+        
+          th {
+            font-weight: bold;
+            text-align: center;
+          }
+        
+          .add-row-button{
+            background-color: #009ee2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+        
+          .add-row-button:hover {
+            background-color: #357abd;
+          }
+        
+         
+          .button-container {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+          }
+          
+          
+          .fa-trash-alt {
+            color: #009ee2;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+          }
+        
+          td input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            border: none;
+            border-bottom: solid 2px #009ee2;
+          }
+        
+          td input[type="text"]:focus {
+            outline: none;
+          }
+        
+          td input[type="checkbox"] {
+            display: block;
+            margin: auto;
+          }
+         
+        
+          /* itinerario */
+          
+        
+          .container-itinerary {
+            text-align: center;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-bottom: 50px;
+          }
+          
+          .title-wrapper {
+            margin-bottom: 30px;
+          }
+          
+          .area-wrapper {
+            display: flex;
+            justify-content: space-between;
+          }
+          
+          .area-favoritos {
+            width: 25%;
+            margin-bottom: 20px;
+          }
+          
+          .favoritos-box {
+            border: 2px solid #009ee2;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+          }
+          
+          .favoritos-box h3 {
+            margin-bottom: 10px;
+            color: #009ee2;
+          }
+        
+          .h4-wrapper {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+          }
+        
+          .h4-wrapper h4:first-child {
+            text-align: left;
+            color: #009ee2;
+          }
+          
+          .h4-wrapper h4 a:last-child {
+            text-align: right;
+            color: #009ee2;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 30px;
+          }
+          
+          
+          
+          .favoritos-box img {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+          }
+          
+          .area-direita {
+            width: 100%;
+            margin-bottom: 20px;
+            flex-direction: column;
+            
+          }
+          
+          .area-direita h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #009ee2;
+          }
+          
+        
+          .title-day-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+          }
+        
+        
+          #add-day-button, #remove-day-button {
+            background-color: #009ee2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+          }
+        
+        
+          #add-day-button:hover, #remove-day-button:hover {
+            background-color: #357abd;
+          }
+          
+          
+         
+          
+        /* botao guardar */
+        #save-button-container {
+          margin-bottom: 50px;
+          margin-right: 30px;
+          display: flex;
+          justify-content: center;
+        }
+        
+        #save-button {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #009ee2;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          padding-left: 70px;
+          padding-right: 70px;
+        }
+        
+        #save-button:hover {
+          transform: scale(1.1);
+        }
+        
+
+            
+
+	</style>
+
+    <script>
+        $(function() {
+
+            $("#datepicker-start").val("");
+            $("#datepicker-end").val("");
+        
+            var startDatePicker = $("#datepicker-start").datepicker({
+              dateFormat: "dd/mm/yy",
+              onSelect: function(selectedDate) {
+                var endDatePicker = $("#datepicker-end");
+                endDatePicker.datepicker("option", "minDate", selectedDate);
+              }
+            });
+        
+            var endDatePicker = $("#datepicker-end").datepicker({
+              dateFormat: "dd/mm/yy",
+              onSelect: function(selectedDate) {
+                var startDate = startDatePicker.datepicker("getDate");
+                var endDate = endDatePicker.datepicker("getDate");
+                if (startDate > endDate) {
+                  alert("A data de término não pode ser inferior à data de início.");
+                  endDatePicker.val("");
+                }
+              }
+            });
+          });
+        
+        
+        
+        
+        
+          //botao das tabelas
+        
+        
+          document.addEventListener("DOMContentLoaded", function() {
+            addInitialFlightsRow();
+          });
+        
+          function addInitialFlightsRow() {
+            var table = document.getElementById("flightsTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="text">';
+            cell3.innerHTML = '<input type="text">';
+            cell4.innerHTML = '<input type="text">';
+            cell5.innerHTML = '<input type="text">';
+            cell6.innerHTML = '<i class="fas fa-trash-alt" onclick="removeRow(this)"></i>';
+          }
+        
+          document.addEventListener("DOMContentLoaded", function() {
+            addInitialEntryRequirementRow();
+          });
+        
+          function addInitialEntryRequirementRow() {
+            var table = document.getElementById("entryRequirementsTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="checkbox">';
+            cell3.innerHTML = '<input type="checkbox">';
+            cell4.innerHTML = '<input type="checkbox">';
+            cell5.innerHTML = '<input type="text">';
+            cell6.innerHTML = '<i class="fas fa-trash-alt" onclick="removeRow(this)"></i>';
+          }
+        
+        
+          function addFlightRow() {
+            var table = document.getElementById("flightsTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="text">';
+            cell3.innerHTML = '<input type="text">';
+            cell4.innerHTML = '<input type="text">';
+            cell5.innerHTML = '<input type="text">';
+            cell6.innerHTML = '<i class="fas fa-trash-alt" onclick="removeRow(this)"></i>';
+          }
+        
+         
+          
+          function addEntryRequirementRow() {
+            var table = document.getElementById("entryRequirementsTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="checkbox">';
+            cell3.innerHTML = '<input type="checkbox">';
+            cell4.innerHTML = '<input type="checkbox">';
+            cell5.innerHTML = '<input type="text">';
+            cell6.innerHTML = '<i class="fas fa-trash-alt" onclick="removeRow(this)"></i>';
+          }
+          
+          function removeRow(icon) {
+            var row = icon.parentNode.parentNode;
+            var table = row.parentNode.parentNode;
+            table.deleteRow(row.rowIndex);
+          }
+          
+          
+          //tabela itinerário
+        
+          document.addEventListener("DOMContentLoaded", function() {
+            addTableRow();
+          });
+        
+          
+          function addTableRow() {
+            var table = document.getElementById("itinerary");
+            var newRow = table.insertRow(-1);
+            
+        
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+            var cell7 = newRow.insertCell(6);
+            
+        
+            cell1.innerHTML = '<input type="text">';
+            cell2.innerHTML = '<input type="text">';
+            cell3.innerHTML = '<input type="text">';
+            cell4.innerHTML = '<input type="text">';
+            cell5.innerHTML = '<input type="text">';
+            cell6.innerHTML = '<input type="text">';
+            cell7.innerHTML = '<i class="fas fa-trash-alt" onclick="removeRow(this)"></i>';
+          }
+          
+        
+        
+        
+         
+        
+        document.addEventListener("DOMContentLoaded", function() {
+          var dayContainer = document.getElementById("day-container");
+          var addDayButton = document.getElementById("add-day-button");
+          var removeDayButton = document.getElementById("remove-day-button");
+          var dayCount = 1;
+        
+        
+          function addTableRow(table) {
+            var newRow = table.tBodies[0].insertRow(-1);
+        
+            for (var i = 0; i < 5; i++) {
+              var cell = newRow.insertCell(i);
+              cell.innerHTML = '<input type="text">';
+            }
+        
+            var deleteCell = newRow.insertCell(5); 
+            deleteCell.innerHTML = '<i class="fas fa-trash-alt" onclick="removeRow(this)"></i>';
+          }
+        
+         
+          function removeRow(icon) {
+            var row = icon.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+          }
+        
+          
+          function addDay() {
+            dayCount++;
+        
+            var titleWrapper = document.createElement("div");
+            titleWrapper.classList.add("title-button-wrapper");
+        
+            var title = document.createElement("h3");
+            title.textContent = "Day " + dayCount;
+        
+            var tabelaWrapper = document.createElement("div");
+            tabelaWrapper.classList.add("tabela-wrapper");
+        
+            var tableWrapper = document.createElement("div");
+            tableWrapper.classList.add("table-wrapper");
+        
+            var table = document.createElement("table");
+            table.id = "itinerary-" + dayCount;
+        
+            var thead = document.createElement("thead");
+            var tr = document.createElement("tr");
+        
+            var headings = ["Time", "Place", "Price", "Description", "Type of Transport"];
+            for (var i = 0; i < headings.length; i++) {
+              var th = document.createElement("th");
+              th.textContent = headings[i];
+              tr.appendChild(th);
+            }
+        
+            thead.appendChild(tr);
+            table.appendChild(thead);
+        
+            var tbody = document.createElement("tbody");
+            table.appendChild(tbody);
+        
+            tableWrapper.appendChild(table);
+        
+            var buttonContainer = document.createElement("div");
+            buttonContainer.classList.add("button-container");
+        
+            var addButton = document.createElement("button");
+            addButton.classList.add("add-row-button");
+            addButton.textContent = "Add Line";
+            addButton.onclick = function() {
+              addTableRow(table);
+            };
+        
+            buttonContainer.appendChild(addButton);
+        
+            tabelaWrapper.appendChild(tableWrapper);
+            tabelaWrapper.appendChild(buttonContainer);
+        
+            titleWrapper.appendChild(title);
+        
+            dayContainer.appendChild(titleWrapper);
+            dayContainer.appendChild(tabelaWrapper);
+        
+            
+            addTableRow(table);
+          }
+        
+        
+          var initialTable = document.getElementById("itinerary-1");
+          addTableRow(initialTable);
+        
+          
+          addDayButton.addEventListener("click", addDay);
+        
+          
+          removeDayButton.addEventListener("click", function() {
+            var days = dayContainer.children;
+            if (days.length > 2) {
+              dayContainer.removeChild(days[days.length - 2]);
+              dayContainer.removeChild(days[days.length - 1]);
+              dayCount--;
+            }
+          });
+        });
+    </script>
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+		<!--<div class="container">-->
+			<div class="navbar">
+				<a href="/" th:href="@{/index}" >Home</a>
+  				<a href="/" th:href="@{/countries}" >Countries</a>
+  				<a href="#" >Places of Interest</a>
+  				<a href="/" th:href="@{/savetrip}" class="active">Save a Trip</a>
+				<a href="/" th:href="@{/login}" class="right">Logout</a>
+			</div>
+			
+		<!--</div>-->
+	<!--</nav>-->
+
+	<br>
+	<br>
+
+    <div class="container-dadosViagem">
+        <div class="input-container">
+          <h2>Country</h2>
+          <input type="text" class="inputDataTrip">
+        </div>
+        <div class="input-container">
+          <h2>Town</h2>
+          <input type="text" class="inputDataTrip">
+        </div>
+        <div class="input-container">
+          <h2>Year</h2>
+          <input type="text" class="inputDataTrip">
+        </div>
+      </div>
+
+    <div class="calendar-container">
+        <h2 class="calendar-title">Select a time to flight:</h2>
+      
+        <div>
+          <label for="datepicker-start">From:</label>
+          <input type="text" id="datepicker-start">
+      
+          <label for="datepicker-end">To:</label>
+          <input type="text" id="datepicker-end">
+        </div>
+      </div>
+
+      <div class="container-itinerary">
+
+        <div class="title-wrapper">
+          <h2>Plans</h2>
+        </div>
+
+        <div class="area-direita">
+            <div id="day-container">
+              <div class="day-wrapper">
+                <div class="title-day-wrapper">
+                  <h3>Day 1</h3>
+                </div>
+                <div class="tabela-wrapper">
+                  <div class="table-wrapper">
+                    <table id="itinerary-1">
+                      <thead>
+                        <tr>
+                          <th>Time</th>
+                          <th>Place</th>
+                          <th>Price</th>
+                          <th>Description</th>
+                          <th>Type of transport</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="button-container">
+                    <button class="add-row-button" onclick="addTableRow('itinerary-1')">Add Line</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button-container-day">
+              <button id="add-day-button" class="dia-button">Add day</button>
+              <button id="remove-day-button" class="dia-button">Remove Day</button>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+
+      <div id="save-button-container">
+        <button onclick="window.location.href='minhasViagens.html'" id="save-button">Save</button>
+      </div>
+
+</body>
+</html>
